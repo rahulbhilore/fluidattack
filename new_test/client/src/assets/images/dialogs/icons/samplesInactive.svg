@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <filter id="grayscale-filter-2" x="-500%" y="-500%" width="1000%" height="1000%" bx:preset="grayscale 1 1">
+      <feColorMatrix type="matrix" values="0.213 0.715 0.072 0 0 0.213 0.715 0.072 0 0 0.213 0.715 0.072 0 0 0 0 0 1 0"/>
+    </filter>
+    <filter id="grayscale-filter-1" x="-500%" y="-500%" width="1000%" height="1000%" bx:preset="grayscale 1 1">
+      <feColorMatrix type="matrix" values="0.213 0.715 0.072 0 0 0.213 0.715 0.072 0 0 0.213 0.715 0.072 0 0 0 0 0 1 0"/>
+    </filter>
+    <filter id="grayscale-filter-0" x="-500%" y="-500%" width="1000%" height="1000%" bx:preset="grayscale 1 1">
+      <feColorMatrix type="matrix" values="0.213 0.715 0.072 0 0 0.213 0.715 0.072 0 0 0.213 0.715 0.072 0 0 0 0 0 1 0"/>
+    </filter>
+    <style>.cls-1{fill:#c70a1a;}.cls-2{fill:#9e0f05;}.cls-3{fill:#ed0000;}</style>
+  </defs>
+  <path class="cls-1" d="M360.85,688.45s-31.31-67.12-14.57-162.14c21.83-123.9,230.61-225.13,230.61-225.13C287.87,391.91,173.35,506.05,360.85,688.45Z" style="filter: url(#grayscale-filter-2);"/>
+  <path class="cls-2" d="M360.84,688.45S308.6,584.39,338.21,471.86c41-156,299.31-265.55,299.31-265.55C255.39,283.15,87.35,482.37,360.84,688.45Z" style="filter: url(#grayscale-filter-1);"/>
+  <path class="cls-3" d="M360.87,688.48c-21-31.09-106.24-138.64-87-262.92,24.76-160,413.06-314,413.06-314-483.66,118.46-831.21,333.24-326,577" style="filter: url(#grayscale-filter-0);"/>
+</svg>

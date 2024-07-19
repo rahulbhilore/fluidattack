@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=Intl"
+    integrity="sha384-Wr3l27q1bK61u689TZfFU9ZY5gqLFskmpQtEoXiM2BEoIWrnULp2zdvB0G4qVpWt" crossorigin="anonymous"
+    defer></script>
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+  <link id="loadingCSS" rel="stylesheet" href="/initial/initial.css" />
+  <link rel="shortcut icon" href="/initial/icons/favicon.ico" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>ARES Kudo</title>
+  <link href="/css/utils/fonts.css" rel="stylesheet preload prefetch" as="style" type="text/css"
+    crossorigin="anonymous" />
+</head>
+
+<body class="init Kudo">
+  <div id="player"></div>
+  <div id="loadingScreen">
+    <div id="centerLoader">
+      <div id="loader"></div>
+      <h4 id="loadingCaption">ARES Kudo is loading now</h4>
+    </div>
+  </div>
+  <div id="react"></div>
+  <script src="/libs/compatibility.js" data-img="/initial/kudo-logo-default.png" type="text/javascript"></script>
+  <script type="text/javascript">
+    var isApp = window.location.pathname.includes("/app/");
+    var isPermissions = window.location.pathname.includes("permissions");
+    if (isApp && isPermissions) {
+      document.body.style.backgroundColor = "#ffffff";
+      if (document.getElementById("loadingScreen")) {
+        document.getElementById("loadingScreen").style.display = "none";
+      }
+    }
+    var language = localStorage["lang"];
+    if (language) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/initial/translations.json");
+      xhr.send();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState !== 4) return;
+
+        if (xhr.status !== 200) {
+          console.error(
+            "unable to load translations for language:",
+            language
+          );
+        } else {
+          try {
+            var translations = JSON.parse(
+              xhr.responseText
+            );
+            var translationString = "ARES Kudo is loading now";
+            if (Object.prototype.hasOwnProperty.call(translations, language)) {
+              translationString = translations[language];
+            } else if (Object.prototype.hasOwnProperty.call(translations, "en")) {
+              translationString = translations["en"];
+            }
+            document.getElementById("loadingCaption").innerHTML =
+              translationString;
+          } catch (Exception) {
+            console.error("translation exception", Exception);
+          }
+        }
+      };
+    }
+    setTimeout(function () {
+      var checkElement = document.getElementById("AK_sw_check_span");
+      var cachesCount = 0;
+      if (checkElement) {
+        console.info("<AK_SW> Boot cache is valid");
+      } else {
+        console.error("<AK_SW> Error loading cache!");
+        if ("serviceWorker" in navigator) {
+          // unregister service worker
+          navigator.serviceWorker.ready.then((registration) => {
+            console.info("<AK_SW> service worker has been unregistered");
+            registration.unregister();
+          });
+          caches
+            .keys()
+            .then(function (cacheNames) {
+              console.info("<AK_SW> clearing following caches:", cacheNames);
+              cachesCount = (cacheNames || []).length;
+              return Promise.all(
+                cacheNames.map((cacheName) => caches.delete(cacheName))
+              );
+            })
+            .then(() => {
+              if (cachesCount > 0) {
+                console.info("<AK_SW> location reload");
+                location.reload();
+              } else {
+                console.info("<AK_SW> No caches found - no need to reload");
+              }
+            });
+        }
+      }
+    }, 10000);
+    window.ARESKudoConfigObject = {};
+  </script>
+  <!-- <script type="module" src="/src/src/generic.jsx"></script> -->
+</body>
+
+</html>

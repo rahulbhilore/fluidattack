@@ -1,0 +1,55 @@
+@import "../../../assets/css/utils/Variables";
+
+div.PPPage {
+  top: 0;
+  background-color: $dark;
+  position: absolute;
+  z-index: 99999;
+  width: 100%;
+  user-select: text;
+  header.docsHeader {
+    height: 50px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    nav.navbar .container-fluid {
+      padding: 0 15px;
+    }
+    .navbar-default {
+      border-radius: 0;
+      background-color: $dark;
+      border-color: $dark;
+      text-align: center;
+      h4 {
+        font-size: 12px;
+        color: $greyText;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 0;
+        line-height: 50px;
+        text-align: center;
+        display: inline-block;
+        margin: 0 0 0 26px;
+      }
+      ul.nav.closeButtonNav {
+        margin-right: 0;
+        & > li > a {
+          padding: 15px !important;
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  div.container {
+    color: $greyText;
+    margin-top: 70px;
+    span,
+    p {
+      color: $rey !important;
+    }
+  }
+}

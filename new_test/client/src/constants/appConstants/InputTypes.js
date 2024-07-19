@@ -1,0 +1,15 @@
+export const TEXT = "text";
+export const COLOR = "color";
+export const DATE = "date";
+export const EMAIL = "email";
+export const FILE = "file";
+export const HIDDEN = "hidden";
+export const NUMBER = "number";
+export const PASSWORD = "password";
+export const RADIO = "radio";
+export const URL = "url";
+export const TIME = "time";
+export const DATETIME = "datetime";
+export const SELECT = "select";
+export const CHECKBOX = "checkbox";
+export const TEXTAREA = "textarea";

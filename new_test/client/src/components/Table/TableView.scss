@@ -1,0 +1,722 @@
+@use "sass:math";
+@import "../../assets/css/utils/Variables";
+
+$regularRowHeight: 65px;
+$rowHeight: 80px;
+$iconHeight: 68px;
+$iconWidth: 68px;
+$iconHeightXref: 30px;
+$iconWidthXref: 29px;
+$iconMargin: math.div($rowHeight - $iconHeight, 2);
+$nameLeftPadding: $iconWidth + 20;
+$genericIconHeight: 32px;
+$genericIconWidth: 36px;
+$genericIconMargin: math.div($rowHeight - $genericIconHeight, 2);
+$genericIconLeftOffset: math.div($iconWidth - $genericIconWidth, 2);
+$permissionIconHeight: 36px;
+$accessPadding: math.div($rowHeight - $permissionIconHeight, 2);
+$highlightColor: rgba(231, 211, 0, 0.5);
+
+div.filesTableBlock {
+  padding: 0 15px 0 30px;
+}
+
+table.OLD {
+  z-index: 2;
+  tbody {
+    width: calc(100vw - 230px);
+    @media only screen and (max-width: 599px) {
+      width: 100vw;
+    }
+    tr {
+      cursor: pointer;
+      position: relative;
+      box-shadow: inset 0 1px 0 0 $greyText;
+      border: none;
+      &:last-child {
+        border-bottom: solid 1px #ececec;
+      }
+      &.selected {
+        background: #ededed !important;
+        transition-duration: 0.1s;
+      }
+      &.upload_canceled td .nameOverlay span.objectname {
+        color: $clone;
+        text-decoration: line-through;
+      }
+      &:hover {
+        background-color: #ededed !important;
+      }
+      &.noFiles {
+        cursor: default !important;
+        td {
+          cursor: default !important;
+        }
+        &:hover {
+          background-color: inherit;
+        }
+      }
+      td {
+        font-family: $font-stack;
+        font-size: 12px;
+        color: $vader;
+        font-weight: 400;
+        cursor: pointer;
+        height: $regularRowHeight;
+        border: none !important;
+        user-select: none;
+        & > * {
+          line-height: $regularRowHeight;
+          white-space: nowrap;
+        }
+        .nameEditBlock {
+          .form-group {
+            margin: math.div($regularRowHeight - 36, 2) 0;
+          }
+        }
+      }
+      td.process_percentage {
+        &.wide_percentage {
+          width: 40% !important;
+        }
+        span.process_caption {
+          font-size: 12px;
+          font-weight: bold;
+          color: $obi;
+          text-transform: uppercase;
+          &.uploadComplete {
+            font-weight: normal;
+          }
+          &.canceled {
+            font-weight: normal;
+            color: $clone;
+          }
+        }
+      }
+      td.progressBar {
+        width: 38% !important;
+        padding-right: 100px !important;
+        .uploadIconOverlay {
+          margin: 0 25px;
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          vertical-align: middle;
+          svg.uploadIcon {
+            vertical-align: top;
+          }
+        }
+      }
+    }
+  }
+
+  thead {
+    tr {
+      th {
+        &.sorted {
+          color: $vader;
+          font-weight: bold;
+          & > img {
+            height: 20px;
+            width: 20px;
+          }
+        }
+        text-align: left;
+        font-size: 11px;
+        color: $clone;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &.blockable {
+    th,
+    td,
+    tr,
+    thead,
+    tbody {
+      display: block;
+    }
+    width: 100%;
+    max-height: 100%;
+    tbody {
+      overflow-x: hidden;
+      overflow-y: auto;
+      tr td {
+        padding: 0;
+        display: inline-block;
+      }
+    }
+    thead {
+      border-bottom: none;
+      border-collapse: collapse;
+      tr {
+        width: 100%;
+        padding: 0 0 0 29px;
+        th {
+          cursor: pointer;
+          border-bottom: none !important;
+          height: 30px;
+          line-height: 30px;
+          display: inline-block;
+          padding: 0;
+        }
+      }
+    }
+    tr:after {
+      clear: both;
+      content: " ";
+      display: block;
+      visibility: hidden;
+    }
+  }
+
+  &.files,
+  &.templates,
+  &.xref {
+    tbody tr {
+      padding-left: 29px;
+      &.deleted > td {
+        color: $rey;
+      }
+      & > td {
+        overflow: hidden;
+        &.noFiles {
+          width: 100% !important;
+          text-align: center;
+          line-height: $rowHeight;
+        }
+        div.modifierInfo {
+          color: $dark;
+          font-size: 12px;
+          font-weight: bold;
+          display: inline-block;
+        }
+        div.modifyDate {
+          display: inline-block;
+          margin-right: 10px;
+        }
+        span.size {
+          color: $dark;
+          font-size: 12px;
+          font-weight: bold;
+        }
+        span.objectname {
+          color: $vader;
+          cursor: pointer;
+          display: inline-block;
+          transition-duration: 0.12s;
+          vertical-align: top;
+          line-height: $rowHeight;
+          &.regularRow {
+            line-height: $regularRowHeight;
+          }
+          &.process {
+            color: $clone;
+            &.canceled {
+              text-decoration: line-through;
+            }
+          }
+        }
+        &.access {
+          height: $rowHeight;
+          line-height: $rowHeight;
+          button {
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            background-color: transparent;
+            border: 1px solid #e2e2e2;
+            border-radius: 4px;
+            cursor: pointer;
+            &:hover,
+            &:focus,
+            &:active {
+              background-color: $obi;
+              box-shadow: none;
+              border-color: #e2e2e2;
+              svg > .st0 {
+                fill: $light;
+              }
+            }
+          }
+          div.publicIconPlaceholder {
+            width: 23px;
+            display: inline-block;
+          }
+          svg {
+            width: 20px;
+            height: 20px;
+            vertical-align: text-top;
+            & > .st0 {
+              fill: $snoke;
+            }
+          }
+          svg.publicIcon {
+            margin-right: 5px;
+            width: 20px;
+            height: 20px;
+            & > .st0 {
+              fill: $obi;
+            }
+          }
+        }
+        & > div.typeImageOverlay {
+          height: $iconHeight;
+          width: $iconWidth;
+          display: inline-block;
+          position: absolute;
+          top: $iconMargin;
+          bottom: $iconMargin;
+          &.genericIcon {
+            height: $genericIconHeight;
+            width: $genericIconWidth;
+            top: $genericIconMargin;
+            bottom: $genericIconMargin;
+            left: $genericIconLeftOffset;
+            &.regularRow {
+              top: math.div($regularRowHeight - $genericIconHeight, 2);
+              bottom: math.div($regularRowHeight - $genericIconHeight, 2);
+              left: 0;
+            }
+          }
+          & > img.containerTypeImage {
+            max-width: 100%;
+            max-height: 100%;
+            vertical-align: top;
+            margin: 0 auto;
+            display: block;
+            &.isGeneric {
+              height: $genericIconHeight;
+              width: $genericIconWidth;
+              top: $genericIconMargin - $iconMargin; //18
+              left: $genericIconLeftOffset; //16
+              position: absolute;
+            }
+            svg {
+              height: 100% !important;
+              width: 100% !important;
+            }
+          }
+        }
+        & > div.nameOverlay {
+          padding: 0 10px 0 $nameLeftPadding;
+          width: 100%;
+          display: inline-block;
+          span.highlight {
+            background-color: $highlightColor;
+          }
+          & > div {
+            overflow: hidden;
+          }
+          &.accessible .objectname {
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+        & > div.overlayWithProgressBar {
+          padding: 0 10px 0 41px;
+          width: 50%;
+          display: inline-block;
+          & > div {
+            overflow: hidden;
+          }
+          &.accessible .objectname {
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+          &.progressDiv {
+            position: relative;
+            top: -30px;
+          }
+        }
+      }
+    }
+  }
+
+  &.files {
+    thead tr {
+      padding-left: 0 !important;
+    }
+    tbody tr {
+      padding-left: 0 !important;
+    }
+    tbody tr td {
+      height: $rowHeight;
+      & > div {
+        line-height: $rowHeight;
+        white-space: nowrap;
+      }
+      button {
+        line-height: 0;
+      }
+      .nameEditBlock {
+        .form-group {
+          margin: math.div($rowHeight - 36, 2) 0;
+        }
+      }
+    }
+    tbody tr td,
+    thead tr th {
+      float: left;
+      position: relative;
+      &:nth-child(1) {
+        width: 50%;
+      }
+      &:nth-child(2) {
+        width: 10%;
+      }
+      &:nth-child(3) {
+        width: 20%;
+      }
+      &:nth-child(4) {
+        width: 20%;
+      }
+    }
+  }
+
+  &.xref {
+    tbody {
+      width: inherit;
+      tr {
+        &.selected {
+          background: $obi !important;
+          img {
+            filter: invert(100%);
+          }
+          & > td.tableColumn > span.size {
+            color: $light;
+          }
+          & > td.tableColumn > div {
+            &,
+            a,
+            a > span.objectname {
+              color: $light;
+            }
+          }
+        }
+        td {
+          &,
+          & > * {
+            height: 36px;
+          }
+          div.typeImageOverlay {
+            &,
+            &.genericIcon {
+              height: $iconHeightXref;
+              width: $iconWidthXref;
+              top: 6px;
+              bottom: 6px;
+            }
+          }
+          span.objectname,
+          & > *,
+          &.noFiles {
+            line-height: 36px;
+          }
+        }
+        & > td > div.nameOverlay {
+          padding-left: 45px;
+        }
+        &.folder > td div.modifyDate {
+          display: block;
+        }
+        & > td > div.nameOverlay.accessible .objectname:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    tbody tr td,
+    thead tr th {
+      float: left;
+      position: relative;
+      &:nth-child(1) {
+        width: 50%;
+      }
+      &:nth-child(2) {
+        width: 35%;
+      }
+      &:nth-child(3) {
+        width: 15%;
+      }
+    }
+  }
+
+  &.templates {
+    tbody tr td,
+    thead tr th {
+      float: left;
+      position: relative;
+      &:nth-child(1) {
+        width: 100%;
+      }
+    }
+  }
+
+  &.users {
+    border-collapse: collapse;
+    thead {
+      padding-bottom: 9px;
+      tr {
+        padding-left: 0;
+      }
+    }
+    tbody tr {
+      border: solid 1px #ececec !important;
+      box-shadow: none;
+      td {
+        user-select: text !important;
+        &:nth-child(1) {
+          padding-left: 22px;
+        }
+      }
+    }
+    tbody tr td,
+    thead tr th {
+      float: left;
+      position: relative;
+      &:nth-child(1) {
+        width: 30%;
+      }
+      &:nth-child(2) {
+        width: 5%;
+      }
+      &:nth-child(3) {
+        width: 30%;
+      }
+      &:nth-child(4) {
+        width: 10%;
+      }
+      &:nth-child(5) {
+        width: 5%;
+      }
+      &:nth-child(6) {
+        width: 20%;
+      }
+    }
+    tr.user {
+      &.disabled {
+        > td {
+          color: $rey !important;
+        }
+        &:hover > td {
+          color: $clone !important;
+        }
+      }
+      td {
+        font-size: 12px;
+        &:nth-child(1) {
+          color: #124daf;
+          font-weight: bold;
+        }
+        &:nth-child(2),
+        &:nth-child(4) {
+          color: #333538;
+          font-weight: bold;
+        }
+        &:nth-child(3) {
+          color: $clone;
+        }
+        .optionsIcon {
+          width: 25px;
+          height: 25px;
+          display: inline-block;
+          margin: 0 10px;
+          font-size: 20px;
+          line-height: 25px;
+          & > img {
+            max-width: 100%;
+            max-height: 100%;
+          }
+          & > svg {
+            color: #333538;
+            &.disabled {
+              color: $rey;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.sized2 {
+    tbody td,
+    thead th {
+      width: 50%;
+    }
+  }
+
+  &.sized3 {
+    tbody td,
+    thead th {
+      width: 33.33333%;
+    }
+  }
+
+  &.sized4 {
+    tbody td,
+    thead th {
+      width: 25%;
+    }
+  }
+
+  &.sized5 {
+    tbody td,
+    thead th {
+      width: 20%;
+    }
+  }
+
+  &.accessTable tbody {
+    max-height: 90px !important;
+    tr td {
+      &.userInfo {
+        width: 60% !important;
+      }
+      &.permissionsUpdate {
+        width: 25% !important;
+        padding: 0 !important;
+      }
+      &.actions {
+        width: 15% !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  table.files tbody tr td,
+  table.files thead tr th {
+    &:nth-child(2) {
+      width: 20%;
+    }
+    &.progressBar {
+      width: 30% !important;
+      padding-right: 80px !important;
+    }
+    &:nth-child(3) {
+      width: 20%;
+    }
+    &:nth-child(4) {
+      width: 10%;
+    }
+  }
+  div.filesTableBlock {
+    padding: 5px;
+    .table-responsive {
+      border: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  table.files tbody tr td,
+  table.files thead tr th {
+    &:nth-child(1) {
+      width: 40%;
+    }
+    &:nth-child(2) {
+      width: 20%;
+    }
+    &:nth-child(3) {
+      width: 25%;
+    }
+    &:nth-child(4) {
+      width: 15%;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .table-responsive {
+    width: auto;
+    margin-bottom: 0 !important;
+    tbody {
+      overflow: auto !important;
+    }
+  }
+  table.files tbody tr > td > div.nameOverlay,
+  table.templates tbody tr > td > div.nameOverlay,
+  table.xref tbody tr > td > div.nameOverlay {
+    padding: 0 0 0 50px;
+  }
+  table.files tbody tr > td > div.typeImageOverlay.genericIcon,
+  table.templates tbody tr > td > div.typeImageOverlay.genericIcon,
+  table.xref tbody tr > td > div.typeImageOverlay.genericIcon {
+    top: 5px;
+    left: 5px;
+    bottom: auto;
+  }
+  table.files tbody tr td {
+    height: 50px;
+  }
+  table.files tbody tr td > div,
+  table.files tbody tr > td span.objectname,
+  table.templates tbody tr > td span.objectname,
+  table.xref tbody tr > td span.objectname,
+  table.files tbody tr > td.noFiles,
+  table.templates tbody tr > td.noFiles,
+  table.xref tbody tr > td.noFiles {
+    line-height: 50px;
+  }
+  table.files tbody tr > td.access,
+  table.templates tbody tr > td.access,
+  table.xref tbody tr > td.access {
+    height: 50px;
+    line-height: 50px;
+  }
+  table.files tbody tr > td span.size,
+  table.templates tbody tr > td span.size,
+  table.xref tbody tr > td span.size {
+    line-height: 50px;
+  }
+  table.files tbody tr > td div.modifyDate,
+  table.templates tbody tr > td div.modifyDate,
+  table.xref tbody tr > td div.modifyDate,
+  table.files tbody tr > td div.modifierInfo,
+  table.templates tbody tr > td div.modifierInfo,
+  table.xref tbody tr > td div.modifierInfo {
+    display: block;
+    line-height: initial;
+  }
+  table.files tbody tr > td.modified {
+    padding: 10px 0;
+  }
+  table.files tbody tr > td > div.typeImageOverlay,
+  table.templates tbody tr > td > div.typeImageOverlay,
+  table.xref tbody tr > td > div.typeImageOverlay {
+    height: 32px;
+    width: 32px;
+  }
+  table.files
+    tbody
+    tr
+    > td
+    > div.typeImageOverlay
+    > img.containerTypeImage.isGeneric,
+  table.templates
+    tbody
+    tr
+    > td
+    > div.typeImageOverlay
+    > img.containerTypeImage.isGeneric,
+  table.xref
+    tbody
+    tr
+    > td
+    > div.typeImageOverlay
+    > img.containerTypeImage.isGeneric {
+    max-width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 5px;
+  }
+}
+
+table.templates tbody {
+  width: 100vw !important;
+}

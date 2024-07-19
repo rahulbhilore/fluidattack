@@ -1,0 +1,546 @@
+$sidebarWidth: 212px;
+$headerHeight: 50px;
+$ds3DExpLogoWidth: 65px;
+$ds3DExpLogoDim: $headerHeight;
+$darkCerulean: #005685;
+$borderColor: #005584;
+$allPort: #196690;
+$Lochmara: #32769c;
+$lightGrey: #cccccc;
+$light: #ffffff;
+$dark: #000000;
+$betaBgColor: #e31818;
+
+$obi: #124daf;
+
+body.DraftSight {
+  background-color: $light !important;
+  &.init {
+    background-color: #f1f1f1 !important;
+    background-image: url("../../images/DS/bg.jpg");
+  }
+
+  div#loadingScreen {
+    background-color: #f1f1f1 !important;
+    h4 {
+      color: #005686;
+    }
+  }
+  #loader {
+    border: 1.1em solid hsla(0, 0%, 80%, 0.2);
+    border-left-color: #005686;
+  }
+  div.main {
+    margin: 20px 0 0;
+  }
+
+  footer.index {
+    background: transparent;
+    .revision {
+      color: $light;
+    }
+  }
+
+  // login form
+  div.login {
+    .loginCaptionContainer img {
+      max-height: 100% !important;
+    }
+    .login-help {
+      .row {
+        margin: 0 !important;
+        & > button#forgotPasswordLink {
+          span.decorated {
+            color: $light;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  div#solidWorks-signIn {
+    border-radius: 4px;
+  }
+
+  .kudoCheckbox.swEULA {
+    label.control-label {
+      vertical-align: top;
+      & > span {
+        color: $light !important;
+      }
+    }
+  }
+
+  &.init.login {
+    overflow: auto;
+  }
+
+  .modal-dialog .modal-content .modal-header {
+    h4.modal-title .typeIcon.img {
+      img {
+        width: 100px;
+        height: 25px;
+        position: relative;
+        top: -5px;
+        padding-right: 3px;
+      }
+      span {
+        position: relative;
+        color: $light;
+        background-color: $betaBgColor;
+        padding: 0px 4px 0px 4px;
+        border-radius: 3px;
+        font-weight: 100;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .modal-dialog .modal-content {
+    .modal-header {
+      background-color: $darkCerulean;
+      h4.modal-title {
+        line-height: unset;
+      }
+    }
+    .permissionsDialog.modal-body {
+      .invalidForm .blockHeader {
+        .modal-title > img {
+          width: 50px;
+          height: 50px;
+          margin-right: 5px;
+          margin-top: -3px;
+        }
+      }
+      .internalAccess {
+        button.kudoButton {
+          margin: -15px 0 0 0;
+        }
+      }
+    }
+
+    .feedbackDialog.modal-body {
+      .invalidForm .feedbackComment,
+      .validForm .feedbackComment {
+        height: 100px;
+        max-height: 150px;
+        max-width: 570px;
+        box-shadow: none;
+        & > label {
+          padding-top: 10px;
+        }
+        &:focus {
+          color: #124daf !important;
+          border-color: #124daf !important;
+        }
+      }
+    }
+
+    .modal-body {
+      min-height: 0;
+      ol.kudoTreeView li > div > div.toggle {
+        margin: 0;
+        padding: 0;
+        min-height: 0;
+      }
+    }
+  }
+
+  button.close > span {
+    background-image: url("../../images/CloseLight.svg");
+  }
+
+  div {
+    .alertOverlay {
+      button.close {
+        & > span {
+          display: block;
+          background-image: url("../../images/Close.svg");
+        }
+      }
+    }
+  }
+
+  header {
+    & > nav.navbar {
+      background: $darkCerulean;
+      .container-fluid {
+        .navbar-header {
+          width: $sidebarWidth;
+          .logoOverlayer.navbar-brand {
+            & > .logo-group {
+              padding: 0px;
+              .logoContainer {
+                float: left;
+                padding: 5px;
+                position: relative;
+                &.logoPic1 {
+                  width: 50px;
+                  top: 6px;
+                  & > img {
+                    width: 75%;
+                    float: left;
+                  }
+                  & > span.dsBrandDivider {
+                    position: absolute;
+                    height: 18px;
+                    width: 2px;
+                    padding: 0px;
+                    top: 11px;
+                    background-color: lightgray;
+                  }
+                }
+                &.logoPic2 {
+                  width: 66px;
+                  left: -5px;
+                  & > img {
+                    width: 100%;
+                    float: left;
+                  }
+                }
+                &.logoPic3 {
+                  width: 159px;
+                  & > img {
+                    width: 77%;
+                    float: left;
+                    position: relative;
+                    left: -8px;
+                  }
+                  & > span {
+                    position: absolute;
+                    color: $light;
+                    background-color: $betaBgColor;
+                    padding: 0px 4px 0px 4px;
+                    border-radius: 3px;
+                    top: 16px;
+                    right: 10px;
+                  }
+                }
+                & > img {
+                  vertical-align: middle;
+                  max-height: 100%;
+                  margin: 0 auto;
+                  display: inline-block;
+                  padding: 0px;
+                }
+              }
+            }
+          }
+          &.clickable {
+            &:hover {
+              background-color: $allPort;
+            }
+          }
+        }
+        .navbar-collapse {
+          margin-right: $ds3DExpLogoWidth;
+          margin-left: $sidebarWidth;
+          .navbar-form {
+            .kudoInputFormGroup.form-group input.kudoInput.searchField {
+              background-color: $light !important;
+              border-color: $light;
+              border-radius: 4px !important;
+              color: $dark !important;
+              margin-left: 150px;
+              &:focus,
+              &:hover,
+              &:active {
+                border-color: transparent !important;
+              }
+            }
+          }
+          ul.nav.navbar-nav {
+            &.options {
+              padding: 0px;
+              &.rename {
+                max-width: 30%;
+              }
+              .renameField {
+                &.closed {
+                  &:hover,
+                  &:focus,
+                  &:active {
+                    border-color: $allPort;
+                  }
+                }
+
+                &.opened {
+                  max-width: 80%;
+                  border: 2px solid transparent;
+                  .form-group {
+                    input {
+                      background-color: $light;
+                      border-color: $light;
+                      color: $dark;
+                    }
+                    .input-group-addon {
+                      background-color: $allPort;
+                      border-color: $allPort;
+                    }
+                  }
+                }
+              }
+            }
+            &.userInfo {
+              display: inline-flex;
+              span {
+                padding: 15px 5px;
+                img {
+                  width: 20px;
+                  &:hover {
+                    cursor: pointer;
+                  }
+                }
+              }
+              li.ds3DLogo {
+                span {
+                  padding: 0px;
+                }
+                a {
+                  padding: 0px;
+                  display: inline-block;
+                  position: absolute;
+                  img {
+                    height: $ds3DExpLogoDim;
+                    width: $ds3DExpLogoDim;
+                  }
+                }
+              }
+              li.help {
+                margin: 9px 2px !important;
+                float: none;
+                display: inline-block;
+                vertical-align: middle;
+                & > a {
+                  color: $light;
+                }
+              }
+            }
+
+            li.dropdown {
+              margin-right: 10px;
+              a#nav-dropdown {
+                padding: 10px 8px;
+                min-width: 138px;
+                &:hover {
+                  border-color: $darkCerulean;
+                  background: $darkCerulean;
+                }
+                .avatar-with-text {
+                  text-align: right;
+                  span {
+                    position: relative;
+                    top: -11px;
+                    margin-right: 5px;
+                  }
+                  img {
+                    height: 30px;
+                    border-radius: 50%;
+                    vertical-align: baseline;
+                  }
+                }
+                .caret {
+                  display: none;
+                }
+              }
+              &.open {
+                background: transparent;
+                a#nav-dropdown {
+                  border-color: $darkCerulean !important;
+                  background: $darkCerulean !important;
+                }
+                ul.dropdown-menu {
+                  margin-top: 10px;
+                  background: $light;
+                  border-color: $lightGrey;
+                  li {
+                    a {
+                      color: $dark;
+                      &:hover {
+                        background: $Lochmara;
+                        color: $light;
+                      }
+                    }
+                    &.logout {
+                      background: $allPort;
+                      border-color: $borderColor;
+                      a {
+                        color: $light;
+                      }
+                    }
+                  }
+
+                  &:before {
+                    content: " ";
+                    display: block;
+                    position: relative;
+                    left: 85%;
+                    top: -8px;
+                    width: 14px;
+                    height: 14px;
+                    border-color: $lightGrey;
+                    border-width: 1px;
+                    border-style: solid solid none none;
+                    background-color: $light;
+                    transform: rotate(-45deg);
+                    -webkit-transform: rotate(-45deg);
+                    -moz-transform: rotate(-45deg);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  div.row.toolbar {
+    & > div {
+      & > .toolbarRightSwitch .form-group a.deletedFilesLink {
+        color: #333;
+      }
+      & > .btn-toolbar .btn-group.operations > button {
+        &:hover,
+        &:focus,
+        &:active {
+          svg .st0,
+          svg .st3 {
+            fill: $lightGrey !important;
+          }
+        }
+      }
+    }
+  }
+
+  div.notify .centered.DraftSight {
+    width: 50%;
+    overflow: hidden;
+    iframe#EULAframe {
+      display: block;
+      background-color: $light;
+      width: 100%;
+      position: relative;
+      margin: 10px 0;
+      min-height: 250px;
+    }
+    span {
+      color: $light !important;
+    }
+    div.login {
+      width: 360px;
+      margin: 0 auto;
+      padding-bottom: 100px;
+    }
+  }
+
+  div.topbar {
+    div.topbar-logo {
+      cursor: pointer;
+    }
+  }
+
+  div.alertOverlay > div.alert {
+    visibility: initial;
+    height: auto;
+    display: block;
+  }
+
+  @media (max-height: 500px) {
+    div.notify .centered.DraftSight {
+      width: 100%;
+      height: initial;
+      padding: 10px;
+      position: relative;
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 767px) {
+    div.notify .centered.DraftSight {
+      width: 100%;
+      height: initial;
+      padding: 10px;
+      position: relative;
+      margin: 0;
+    }
+
+    header {
+      & > nav.navbar .container-fluid {
+        .navbar-collapse {
+          background-color: $darkCerulean;
+          ul.nav.navbar-nav {
+            li.dropdown {
+              a#nav-dropdown {
+                min-width: 200px;
+              }
+            }
+          }
+          .navbar-form {
+            .kudoInputFormGroup.form-group input.kudoInput.searchField {
+              margin-left: 0px;
+            }
+          }
+        }
+        .navbar-header {
+          .logoOverlayer.navbar-brand {
+            max-width: $sidebarWidth;
+          }
+          button.navbar-toggle {
+            background-color: $allPort;
+            border-color: $allPort;
+            &:hover,
+            &:focus {
+              background-color: $darkCerulean;
+              border-color: $darkCerulean;
+            }
+          }
+        }
+      }
+    }
+
+    div.row.toolbar {
+      & > div {
+        & > .toolbarRightSwitch .form-group a.deletedFilesLink {
+          color: $light;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 770px) and (max-width: 1300px) {
+    header
+      > nav.navbar
+      .container-fluid
+      .navbar-collapse
+      .navbar-form
+      .kudoInputFormGroup.form-group
+      input.kudoInput.searchField {
+      margin: 0;
+      width: 150px;
+    }
+  }
+
+  // This is fix for style conflicts with UIKIT
+  &.modal-open .table-hover {
+    & > tbody {
+      & > tr {
+        & > td {
+          margin-top: 1px;
+        }
+      }
+
+      & > .selected:hover {
+        & > td {
+          background-color: $obi;
+        }
+      }
+    }
+  }
+}
+
+//This fix for XENON-32547 and overrides broken rule in DS templates
+body .main .app-content {
+  overflow-y: hidden;
+}

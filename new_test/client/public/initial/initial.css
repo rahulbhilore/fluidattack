@@ -1,0 +1,119 @@
+body {
+  background-color: #141518;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+div#loadingScreen {
+  width: 100%;
+  height: 100%;
+  background-color: #141518;
+  text-align: center;
+}
+
+div#loadingScreen img {
+  width: 300px;
+}
+
+div#centerLoader {
+  height: 300px;
+  width: 33%;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+div#loadingScreen p,
+div#loadingScreen h4 {
+  text-align: center;
+  line-height: 30px;
+  margin-top: 20px;
+  color: #fff;
+  font-size: 18px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#loader,
+#loader:after {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+  z-index: 9999;
+}
+
+div#loadingScreen #loader {
+  margin: 60px auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border: 11px solid rgba(255, 255, 255, 0.2);
+  border-left-color: #f6221c;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+}
+
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+#player {
+  position: absolute;
+}
+
+/* DS version */
+
+body.DraftSight {
+  background-color: #f1f1f1 !important;
+}
+
+body.DraftSight.init {
+  background-color: #f1f1f1 !important;
+}
+
+body.DraftSight div#loadingScreen {
+  background-color: #f1f1f1 !important;
+}
+
+body.DraftSight div#loadingScreen h4 {
+  color: #005686;
+}
+body.DraftSight div#loadingScreen #loader {
+  border: 1.1em solid hsla(0, 0%, 80%, 0.2);
+  border-left-color: #005686;
+}

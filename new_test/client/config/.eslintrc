@@ -1,0 +1,54 @@
+{
+  "extends": ["airbnb", "prettier", "plugin:@typescript-eslint/recommended"],
+  "plugins": ["react", "prettier", "@typescript-eslint"],
+  "parser": "@babel/eslint-parser",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "es2017": true
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        // default values are changed in 2.0
+        // we probably should change them too at some point
+        "endOfLine": "auto",
+        "trailingComma": "none",
+        // this one is especially something I'd like to make "always"
+        "arrowParens": "avoid"
+      }
+    ],
+    "no-param-reassign": [2, { "props": false }],
+    "no-restricted-globals": "off",
+    "no-underscore-dangle": "off",
+    "import/no-unresolved": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "no-multiple-empty-lines": "error",
+    "react/static-property-placement": [1, "static public field"],
+    "react/jsx-filename-extension": [
+      2,
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "import/extensions": "off",
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
+    "default-param-last": "off",
+    "react/function-component-definition": "off",
+
+    // typescript
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-this-alias": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.tsx", "**/*.ts"],
+      "rules": {
+        "react/require-default-props": "off"
+      }
+    }
+  ]
+}

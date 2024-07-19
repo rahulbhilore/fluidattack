@@ -1,0 +1,6 @@
+export const DELETE_ERRORS = {
+  NO_IDS_SPECIFIED: "NO_IDS_SPECIFIED",
+  API_ERROR: "API_ERROR"
+};
+
+export const OTHER_ERRORS = {};

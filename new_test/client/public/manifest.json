@@ -1,0 +1,26 @@
+{
+    "short_name": "ARES Kudo",
+    "name": "ARES Kudo",
+    "icons": [
+      {
+        "src": "/logos/64.png",
+        "type": "image/png",
+        "sizes": "64x64"
+      },
+      {
+        "src": "/logos/120.png",
+        "type": "image/png",
+        "sizes": "120x120"
+      },
+      {
+        "src": "/logos/256.png",
+        "type": "image/png",
+        "sizes": "256x256"
+      }
+    ],
+    "start_url": "/",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#333538"
+  }

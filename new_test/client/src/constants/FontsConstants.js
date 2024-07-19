@@ -1,0 +1,20 @@
+export const constantPrefix = "FONT_";
+
+export const GET_CUSTOM_FONTS = `${constantPrefix}GET_CUSTOM_FONTS`;
+export const GET_CUSTOM_FONTS_SUCCESS = `${constantPrefix}GET_CUSTOM_FONTS_SUCCESS`;
+export const GET_CUSTOM_FONTS_FAIL = `${constantPrefix}GET_CUSTOM_FONTS_FAIL`;
+export const GET_COMPANY_FONTS = `${constantPrefix}GET_COMPANY_FONTS`;
+export const GET_COMPANY_FONTS_SUCCESS = `${constantPrefix}GET_COMPANY_FONTS_SUCCESS`;
+export const GET_COMPANY_FONTS_FAIL = `${constantPrefix}GET_COMPANY_FONTS_FAIL`;
+export const DOWNLOAD_FONT = `${constantPrefix}DOWNLOAD_FONT`;
+export const DOWNLOAD_FONT_SUCCESS = `${constantPrefix}DOWNLOAD_FONT_SUCCESS`;
+export const DOWNLOAD_FONT_FAIL = `${constantPrefix}DOWNLOAD_FONT_FAIL`;
+export const UPLOAD_CUSTOM_FONT = `${constantPrefix}UPLOAD_CUSTOM_FONT`;
+export const UPLOAD_CUSTOM_FONT_SUCCESS = `${constantPrefix}UPLOAD_CUSTOM_FONT_SUCCESS`;
+export const UPLOAD_CUSTOM_FONT_FAIL = `${constantPrefix}UPLOAD_CUSTOM_FONT_FAIL`;
+export const UPLOAD_COMPANY_FONT = `${constantPrefix}UPLOAD_COMPANY_FONT`;
+export const UPLOAD_COMPANY_FONT_SUCCESS = `${constantPrefix}UPLOAD_COMPANY_FONT_SUCCESS`;
+export const UPLOAD_COMPANY_FONT_FAIL = `${constantPrefix}UPLOAD_COMPANY_FONT_FAIL`;
+export const REMOVE = `${constantPrefix}REMOVE`;
+export const REMOVE_SUCCESS = `${constantPrefix}REMOVE_SUCCESS`;
+export const REMOVE_FAIL = `${constantPrefix}REMOVE_FAIL`;

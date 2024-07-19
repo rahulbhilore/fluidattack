@@ -1,0 +1,87 @@
+@import "../../assets/css/utils/Variables";
+
+/** new breadcrumbs **/
+.breadcrumbsGrid.container-fluid {
+  padding: 0 0 0 29px;
+  &.yellowed {
+    background-color: $yellowBreadcrumb;
+    margin: 0;
+    padding: 0 0 0 5px;
+    ol.breadcrumb {
+      margin: 8px 0;
+    }
+  }
+  &.searchMainBreadcrumbs {
+    padding: 0 30px;
+    ol.breadcrumb {
+      margin: 20px 0 3px 0;
+      padding-bottom: 17px;
+      border-bottom: solid 1px $breadcrumbBottomBorder;
+    }
+  }
+
+  ol.breadcrumb {
+    background: none;
+    margin: 20px 0;
+    padding: 0;
+    .search {
+      margin: 0;
+      padding: 20px 0;
+    }
+
+    & > li {
+      line-height: 20px;
+      &.active {
+        cursor: pointer;
+        &.current {
+          cursor: not-allowed;
+          & > span {
+            color: $obi;
+            padding: 0;
+          }
+        }
+      }
+      & + li:before {
+        content: url("../../assets/images/Chevron-Right.svg");
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        padding: 0;
+        vertical-align: bottom;
+      }
+      & > a,
+      & > span {
+        display: inline-block;
+        vertical-align: bottom;
+        color: $clone;
+        padding: 0;
+        box-sizing: border-box;
+        border: none;
+        text-decoration: none;
+      }
+      img,
+      span.isvg,
+      span.isvg > svg,
+      svg {
+        width: 20px;
+        height: 20px;
+        vertical-align: bottom;
+      }
+      & > a:hover {
+        text-decoration: underline;
+        svg {
+          fill: $obi;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .breadcrumbsGrid.container-fluid {
+    padding-left: 10px;
+    ol.breadcrumb {
+      margin: 10px 0;
+    }
+  }
+}
